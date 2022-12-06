@@ -39,3 +39,7 @@ Route.post("/upload-url", "UploadController.uploadURL").namespace(
 Route.post("/upload-file", "UploadController.uploadFile").namespace(
   "App/Controllers/Http/Storage"
 );
+
+Route.post("/create-directory", "DirectoryController.create").namespace(
+  "App/Controllers/Http/Storage"
+);

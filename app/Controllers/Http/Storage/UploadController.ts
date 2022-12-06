@@ -29,22 +29,20 @@ export default class UploadController {
     }
   };
 
-  public uploadFile = async ({ logger, response, request }) => {
-    logger.info({ r: request.all() });
-
-    const inputUrl = request.input("url");
+  public uploadFile = async ({ response, request }) => {
     try {
-      const fileName = path.basename(inputUrl);
-      const downloadPath = Application.appRoot + "/uploads";
-      const localFilePath = path.resolve(downloadPath, fileName);
-      const res = await axios.get(request.input("url"), {
-        responseType: "stream",
+      // console.log({ r: request.all(), f: request.file("file") });
+      const folderName = request.input("folderName");
+      const file = request.file("file");
+      const existence = fs.existsSync(
+        path.join(`./uploads`, folderName, file.clientName)
+      );
+      if (existence) return response.json({ msg: "existed" });
+      console.log({ folderName });
+      await file.moveToDisk(`${folderName}/`, {
+        name: file.clientName,
       });
 
-      const w = res.data.pipe(fs.createWriteStream(localFilePath));
-      w.on("finish", () => {
-        console.log("Successfully downloaded file!");
-      });
       return response.json({ msg: "ok" });
     } catch (error) {
       console.error(error);
