@@ -1,0 +1,51 @@
+{
+  "name": "cloud-storage",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node ace serve --watch",
+    "build": "node ace build --production",
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "@adonisjs/assembler": "^5.9.5",
+    "@babel/core": "^7.17.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.18.6",
+    "@japa/preset-adonis": "^1.2.0",
+    "@japa/runner": "^2.2.2",
+    "@symfony/webpack-encore": "4.1.1",
+    "@types/axios": "^0.14.0",
+    "@types/proxy-addr": "^2.0.0",
+    "@types/source-map-support": "^0.5.6",
+    "adonis-preset-ts": "^2.1.0",
+    "https-proxy-agent": "^5.0.1",
+    "pino-pretty": "^9.1.1",
+    "postcss-loader": "^7.0.2",
+    "tailwindcss": "^3.2.4",
+    "ts-loader": "^9.4.2",
+    "typescript": "~4.6",
+    "webpack": "^5.72",
+    "webpack-cli": "^4.9.1",
+    "youch": "^3.2.2",
+    "youch-terminal": "^2.1.5"
+  },
+  "dependencies": {
+    "@adonisjs/core": "^5.8.0",
+    "@adonisjs/repl": "^3.1.0",
+    "@adonisjs/session": "^6.2.0",
+    "@adonisjs/shield": "^7.0.0",
+    "@adonisjs/view": "^6.1.0",
+    "@eidellev/inertia-adonisjs": "^7.2.0",
+    "@inertiajs/inertia": "^0.11.1",
+    "@inertiajs/inertia-react": "^0.8.1",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "axios": "^1.2.1",
+    "proxy-addr": "^2.0.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.21"
+  }
+}
