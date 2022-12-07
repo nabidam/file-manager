@@ -8,4 +8,11 @@ export default class Helper {
     }
     return true;
   };
+  static sizeFormatter = (size: number) =>
+    new Intl.NumberFormat([], {
+      style: "unit",
+      unit: "byte",
+      notation: "compact",
+      unitDisplay: "narrow",
+    }).format(size);
 }
