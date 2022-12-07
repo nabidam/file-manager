@@ -20,26 +20,30 @@
 
 import Route from "@ioc:Adonis/Core/Route";
 
+Route.get("/login", "LoginController.index").namespace(
+  "App/Controllers/Http/Auth"
+);
+
 Route.get("/test", async ({ inertia }) => {
   return inertia.render("Test");
 });
 
-Route.get("/files", "BaseController.index").namespace(
-  "App/Controllers/Http/Storage"
-);
+Route.get("/files", "BaseController.index")
+  .namespace("App/Controllers/Http/Storage")
+  .middleware(["auth"]);
 
-Route.get("/files/*", "BaseController.route").namespace(
-  "App/Controllers/Http/Storage"
-);
+Route.get("/files/*", "BaseController.route")
+  .namespace("App/Controllers/Http/Storage")
+  .middleware(["auth"]);
 
-Route.post("/upload-url", "UploadController.uploadURL").namespace(
-  "App/Controllers/Http/Storage"
-);
+Route.post("/upload-url", "UploadController.uploadURL")
+  .namespace("App/Controllers/Http/Storage")
+  .middleware(["auth"]);
 
-Route.post("/upload-file", "UploadController.uploadFile").namespace(
-  "App/Controllers/Http/Storage"
-);
+Route.post("/upload-file", "UploadController.uploadFile")
+  .namespace("App/Controllers/Http/Storage")
+  .middleware(["auth"]);
 
-Route.post("/create-directory", "DirectoryController.create").namespace(
-  "App/Controllers/Http/Storage"
-);
+Route.post("/create-directory", "DirectoryController.create")
+  .namespace("App/Controllers/Http/Storage")
+  .middleware(["auth"]);

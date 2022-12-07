@@ -4,6 +4,7 @@ import Item from "../components/display/item";
 import Dropbox from "../components/input/dropbox";
 import isValidUrl from "../helpers/isValidUrl";
 import { useSnackbar } from "react-simple-snackbar";
+import Box from "../components/display/Box";
 
 const successSnackbar = {
   style: {
@@ -142,8 +143,7 @@ const Files = ({ files, directories }: any) => {
           Create
         </button>
       </div>
-      <div className="p-4 border-2 border-bg-light rounded-lg gap-4 flex flex-col mb-8">
-        <h3>Upload</h3>
+      <Box title="Upload">
         <input
           type="url"
           placeholder="url"
@@ -157,7 +157,7 @@ const Files = ({ files, directories }: any) => {
         >
           Upload URL
         </button>
-      </div>
+      </Box>
       <Dropbox
         handleChangeFile={handleChangeFile}
         handleUploadFile={handleUploadFile}
