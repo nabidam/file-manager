@@ -44,6 +44,10 @@ Route.get("/files/*", "BaseController.route")
   .namespace("App/Controllers/Http/Storage")
   .middleware(["auth"]);
 
+Route.post("/contents", "BaseController.getContents")
+  .namespace("App/Controllers/Http/Storage")
+  .middleware(["auth"]);
+
 Route.post("/upload-url", "UploadController.uploadURL")
   .namespace("App/Controllers/Http/Storage")
   .middleware(["auth"]);

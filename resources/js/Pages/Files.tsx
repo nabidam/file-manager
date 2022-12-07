@@ -7,12 +7,26 @@ import { useSnackbar } from "react-simple-snackbar";
 import Box from "../components/display/Box";
 import { errorSnackbar, successSnackbar } from "../helpers/snackbarVariants";
 
-const Files = ({ files, directories }: any) => {
+const Files = () => {
   const [openSuccess] = useSnackbar(successSnackbar);
   const [openError] = useSnackbar(errorSnackbar);
+  const [href, setHref] = React.useState(
+    new URL(window.location.href).pathname
+  );
+  const [contents, setContent] = React.useState([]);
   const [url, setUrl] = React.useState("");
   const [newDirectory, setNewDirectory] = React.useState("");
   const [file, setFile] = React.useState<File>();
+
+    React.useEffect(() => {
+      const fetchContents = async () => {
+        try {
+
+        } catch (error) {
+
+        }
+      }
+    }, [])
 
   const handleChangeUrl = (e: React.ChangeEvent<HTMLInputElement>) =>
     setUrl(e.target.value);
@@ -22,6 +36,18 @@ const Files = ({ files, directories }: any) => {
 
   const handleChangeNewDirectory = (e: React.ChangeEvent<HTMLInputElement>) =>
     setNewDirectory(e.target.value);
+
+  const changeHref = async (newHref: string) => {
+    try {
+      const newContents = await axios.get(`${newHref}?format=json`);
+      console.log({ d: newContents.data });
+      setContent(newContents.data);
+      setHref(newHref);
+      window.history.pushState("files", "files", newHref);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleCreateDirectory = async () => {
     if (newDirectory !== "") {
@@ -104,13 +130,10 @@ const Files = ({ files, directories }: any) => {
     <div className="container mx-auto py-8 flex flex-col">
       <div className="mb-8">
         <ul className="w-full">
-          {directories.length
-            ? directories.map((directory, index) => (
-                <Item key={index} item={directory} />
+          {contents.length
+            ? contents.map((directory, index) => (
+                <Item key={index} item={directory} handleChangeHref={changeHref} />
               ))
-            : ""}
-          {files.length
-            ? files.map((file, index) => <Item key={index} item={file} />)
             : ""}
         </ul>
       </div>
