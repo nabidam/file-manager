@@ -20,7 +20,15 @@
 
 import Route from "@ioc:Adonis/Core/Route";
 
+Route.get("/", ({ inertia }) => {
+  return inertia.render("Root");
+});
+
 Route.get("/login", "LoginController.index").namespace(
+  "App/Controllers/Http/Auth"
+);
+
+Route.post("/login", "LoginController.login").namespace(
   "App/Controllers/Http/Auth"
 );
 

@@ -5,20 +5,7 @@ import Dropbox from "../components/input/dropbox";
 import isValidUrl from "../helpers/isValidUrl";
 import { useSnackbar } from "react-simple-snackbar";
 import Box from "../components/display/Box";
-
-const successSnackbar = {
-  style: {
-    backgroundColor: "#2e7d32",
-    color: "#ccc",
-  },
-};
-
-const errorSnackbar = {
-  style: {
-    backgroundColor: "#d32f2f",
-    color: "#ccc",
-  },
-};
+import { errorSnackbar, successSnackbar } from "../helpers/snackbarVariants";
 
 const Files = ({ files, directories }: any) => {
   const [openSuccess] = useSnackbar(successSnackbar);
