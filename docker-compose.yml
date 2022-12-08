@@ -1,21 +1,32 @@
 version: '3.8'
 
 services:
-  database:
-    container_name: database
-    image: mysql:8.0.30
-    command: --init-file /data/application/init.sql
+  db:
+    container_name: db
+    image: mariadb
+    #  command: --init-file /data/application/init.sql
     ports:
       - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}:-password"
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
-      MYSQL_USER: "${MYSQL_USER}:-user"
-      MYSQL_PASSWORD: "${MYSQL_PASSWORD}:-password"
-      MYSQL_DATABASE: "${MYSQL_DATABASE}:-dbname"
+        #environment:
+      #  MARIADB_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}:-password"
+      #  MARIADB_ROOT_PASSWORD: "password"
+      #  MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      #  MARIADB_USER: "${MYSQL_USER}:-user"
+      #  MARIADB_USER: "user"
+      #  MARIADB_PASSWORD: "${MYSQL_PASSWORD}:-password"
+      #  MARIADB_DATABASE: "dbname"
+      #  MARIADB_PASSWORD: "${MYSQL_PASSWORD}:-password"
+      #  MARIADB_DATABASE: "dbname"
     env_file:
       - .env
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
-      - ./init.sql:/data/application/init.sql
+      - "./init.d:/docker-entrypoint-initdb.d/:ro"
       - ./dbdata:/var/lib/mysql
+    restart: always
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

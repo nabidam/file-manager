@@ -147,6 +147,9 @@ Encore.configureDevServerOptions((options) => {
     directory: join(__dirname, "./resources/views"),
     watch: true,
   });
+
+  options.host = '0.0.0.0';
+  options.port = '3334';
 });
 
 /*
