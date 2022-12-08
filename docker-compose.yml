@@ -18,3 +18,4 @@ services:
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
       - ./init.sql:/data/application/init.sql
+      - ./dbdata:/var/lib/mysql
