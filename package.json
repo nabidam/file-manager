@@ -2,6 +2,25 @@
   "name": "cloud-storage",
   "version": "1.0.0",
   "private": true,
+  "description": "Example project to store files using external url or physical files, using AdonisJS, Inertia, ReactJS, and TailwindCSS.",
+  "author": {
+    "name": "Navid",
+    "email": "navidabbaspoor@gmail.com",
+    "url": "https://github.com/nabidam/"
+  },
+  "keywords": [
+    "adonisjs",
+    "nodejs",
+    "fullstack",
+    "typescript",
+    "javascript",
+    "reactjs",
+    "inertia",
+    "tailwindcss",
+    "pm2",
+    "docker",
+    "docker-compose"
+  ],
   "scripts": {
     "dev": "node ace serve --watch",
     "build": "node ace build --production",

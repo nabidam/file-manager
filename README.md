@@ -2,7 +2,7 @@
 
 FileManager is a simple project to store your files. You can upload any file by giving a URL, or upload it directly on the server. Also you can create new directories in a given directory. More features are going to be implemented.
 
-It's built with AdonisJS, Inertia, ReactJS, and TailwindCSS.
+It's built with [AdonisJS](https://docs.adonisjs.com/guides/introduction), [Inertia](https://inertiajs.com/), [ReactJS](https://reactjs.org/docs/getting-started.html), and [TailwindCSS](https://tailwindcss.com/).
 
 You can also use it as a test project to know how to use ReactJS and TailwindCSS alongside with Inertia on top of AdonisJS. It's also a good practive for using pm2 as a node process manager and using mysql running with docker (docker-compose).
 
